@@ -5,7 +5,6 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 import H1 from "../Components/H1"
 import H2 from "../Components/H2"
-import H3 from "../Components/H3"
 
 
 const User = () =>{
@@ -32,15 +31,18 @@ const User = () =>{
 
     return (
         <>
-            <H1>user</H1>
-            <article>
-                <H2>{name}</H2>
-                <img src={profile_picture} alt={name} />
+            <article className="flex wrap jcsb m-t-30">
 
-                <H3>User info</H3>
-                <small>From {city}</small>
-                <p>password:{password}</p>
-                <p>email:{email}</p>
+                <img src={profile_picture} alt={name} className="imguser"/>
+
+                <div className="flex clmn jcsb">
+                    <H1>{name}</H1>
+                    <H2>infos</H2>
+                    <small>From {city}</small>
+                    <p>password: {password}</p>
+                    <p>email: {email}</p>
+                </div>
+                
             </article>
             
         </>
