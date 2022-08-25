@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 import H1 from "../Components/H1"
 import Input from "../Components/Input"
@@ -15,7 +16,7 @@ const NewUser = () =>{
     const [errorDataEmail, setErrorDataEmail] = useState([])
     const [errorDataPassword, setErrorDataPassword] = useState([])
 
-
+    const navigate=useNavigate()
 
     const handleNameChange = e =>{
         setName(e.target.value)
@@ -60,6 +61,11 @@ const NewUser = () =>{
             setErrorDataName(data.filter(d=>d.param === "name"))
             setErrorDataEmail(data.filter(d=>d.param === "email"))
             setErrorDataPassword(data.filter(d=>d.param === "password"))
+            setName("")
+            setPassword("")
+            setMail("")
+        }else{
+            navigate(`/${data.slug}`)
         }
 
     }
@@ -103,7 +109,7 @@ const NewUser = () =>{
 
             />
 
-            <select required onChange={handleCityChange}>
+            <select required onChange={handleCityChange} value={city}>
 
                 <option value="">Select a city</option>
                 <option value="Paris">Paris</option>
