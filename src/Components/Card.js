@@ -11,7 +11,7 @@ const Card = (props) =>{
         <article>
             <H2>{name}</H2>
             <img src={profile_picture} alt={name} />
-            <Link to={`/${slug}`}><Button text={"See user"}/></Link>
+            <Link to={`/${slug}`}><Button text="See user"/></Link>
         </article>
     )
 }
