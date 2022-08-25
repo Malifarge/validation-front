@@ -5,11 +5,13 @@ const Input = ({
     placeholder,
     handleChange,
     required,
-    error
+    error,
+    className
   }) => {
+    
     return (
-      <>
-        <div>
+      <div className="flex clmn aic">
+        <div className="flex jcsb w-280">
           <label htmlFor={label}>{label}</label>
           <input
             name={label}
@@ -18,10 +20,11 @@ const Input = ({
             placeholder={placeholder}
             onChange={handleChange}
             required={required}
+            className={className}
           />
         </div>
-        {error && <small>{error.map(err=>err.msg)}</small>}
-      </>
+        {error && <small className="m-t-10">{error.map(err=>err.msg)}</small>}
+      </div>
     )
   }
   

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 import H1 from "../Components/H1"
@@ -15,6 +15,10 @@ const NewUser = () =>{
     const [errorDataName, setErrorDataName] = useState([])
     const [errorDataEmail, setErrorDataEmail] = useState([])
     const [errorDataPassword, setErrorDataPassword] = useState([])
+    const [classNameName, setClassNameName] = useState("")
+    const [classNamePassword, setClassNamePassword] = useState("")
+    const [classNameEmail, setClassNameEmail] = useState("")
+
 
     const navigate=useNavigate()
 
@@ -70,12 +74,28 @@ const NewUser = () =>{
 
     }
 
+    useEffect(()=> {
+        if(errorDataName[0]){
+            setClassNameName("erreur")
+        }
+    }, [errorDataName])
 
+    useEffect(()=> {
+        if(errorDataPassword[0]){
+            setClassNamePassword("erreur")
+        }
+    }, [errorDataPassword])
+
+    useEffect(()=> {
+        if(errorDataEmail[0]){
+            setClassNameEmail("erreur")
+        }
+    }, [errorDataEmail])
 
     return (
         <>
         <H1>New user</H1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="flex clmn g-30 aic m-t-30">
             <Input 
                 label="name" 
                 type="texte"
@@ -84,6 +104,7 @@ const NewUser = () =>{
                 handleChange={handleNameChange}
                 required
                 error={errorDataName}
+                className={classNameName}
             />
 
             <Input 
@@ -94,7 +115,7 @@ const NewUser = () =>{
                 handleChange={handlePasswordChange}
                 required
                 error={errorDataPassword}
-
+                className={classNamePassword}
 
             />
 
@@ -106,7 +127,7 @@ const NewUser = () =>{
                 handleChange={handleMailChange}
                 required
                 error={errorDataEmail}
-
+                className={classNameEmail}
             />
 
             <select required onChange={handleCityChange} value={city}>

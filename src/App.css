@@ -100,3 +100,15 @@ h1{
 .m-t-30{
   margin-top: 30px;
 }
+
+.m-t-10{
+  margin-top: 10px;
+}
+
+small{
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.erreur{
+  border: 2px solid red;
+}
