@@ -1,5 +1,6 @@
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import Nav from "./Components/Nav";
+import './App.css'
 
 import User from "./Pages/User";
 import Users from "./Pages/Users";

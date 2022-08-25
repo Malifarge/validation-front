@@ -23,7 +23,7 @@ const Users = () =>{
     return (
         <>
             <H1>users</H1>
-            <section>
+            <section className="flex wrap g-30">
                 {users.map(user =>{
                 return <Card key={user.name} user={user} />
                 })}
