@@ -14,11 +14,11 @@ const Users = () =>{
     },[])
 
     const fetchUsers = async () =>{
-    const response = await fetch('http://localhost:5000/users')
-    const data = await response.json()
-    setUsers(data)
+        const response = await fetch('http://localhost:5000/users')
+        const data = await response.json()
+        setUsers(data)
 
-}
+    }
 
     return (
         <>
