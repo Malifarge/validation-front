@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import H1 from "../Components/H1"
 import Input from "../Components/Input"
 import Button from "../Components/Button"
+import Select from "../Components/Select"
 
 const NewUser = () =>{
 
@@ -134,15 +135,13 @@ const NewUser = () =>{
                 className={classNameEmail}
             />
 
-            <select required onChange={handleCityChange} value={city}>
-
-                <option value="">Select a city</option>
-                <option value="Paris">Paris</option>
-                <option value="Los Angeles">Los Angeles</option>
-                <option value="Tokyo">Tokyo</option>
-
-            </select>
-
+            <Select
+                required
+                handleChange={handleCityChange}
+                value={city}
+                options={["select a city", "Paris", "Los Angeles", "Tokyo"]} 
+            />
+            
             <Input 
 
                 label="Profile picture" 
