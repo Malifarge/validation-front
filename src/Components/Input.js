@@ -23,7 +23,7 @@ const Input = ({
             className={className}
           />
         </div>
-        {error && <small className="m-t-10">{error.map(err=>err.msg)}</small>}
+        {error && <small className="m-t-10 red">{error.map(err=>err.msg)}</small>}
       </div>
     )
   }

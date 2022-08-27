@@ -45,6 +45,10 @@ const NewUser = () =>{
     const handleSubmit = async e => {
         e.preventDefault()
 
+        setClassNameName("")
+        setClassNamePassword("")
+        setClassNameEmail("")
+
         const user = {
             name,
             email,

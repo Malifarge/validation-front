@@ -112,3 +112,7 @@ small{
 .erreur{
   border: 2px solid red;
 }
+
+.red{
+  color: red;
+}
