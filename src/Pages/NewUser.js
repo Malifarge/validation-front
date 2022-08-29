@@ -5,6 +5,7 @@ import H1 from "../Components/H1"
 import Input from "../Components/Input"
 import Button from "../Components/Button"
 import Select from "../Components/Select"
+import { newUser } from "../api/users"
 
 const NewUser = () =>{
 
@@ -58,14 +59,7 @@ const NewUser = () =>{
             profile_picture
         }
 
-      const response = await fetch('http://localhost:5000/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'Application/json'
-      },
-      body: JSON.stringify(user)
-    })
-        const data = await response.json()
+        const data = await newUser(user)
         if (data[0]){
             setErrorDataName(data.filter(d=>d.param === "name"))
             setErrorDataEmail(data.filter(d=>d.param === "email"))
