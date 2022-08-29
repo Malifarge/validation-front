@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 import H1 from "../Components/H1"
@@ -14,12 +14,7 @@ const NewUser = () =>{
     const [email,setMail] = useState("")
     const [city,setCity] = useState("")
     const [profile_picture,setProfilePicture] = useState("")
-    const [errorDataName, setErrorDataName] = useState([])
-    const [errorDataEmail, setErrorDataEmail] = useState([])
-    const [errorDataPassword, setErrorDataPassword] = useState([])
-    const [classNameName, setClassNameName] = useState("")
-    const [classNamePassword, setClassNamePassword] = useState("")
-    const [classNameEmail, setClassNameEmail] = useState("")
+    const [errorData, setErrorData] = useState([])
 
 
     const navigate=useNavigate()
@@ -47,10 +42,6 @@ const NewUser = () =>{
     const handleSubmit = async e => {
         e.preventDefault()
 
-        setClassNameName("")
-        setClassNamePassword("")
-        setClassNameEmail("")
-
         const user = {
             name,
             email,
@@ -61,9 +52,7 @@ const NewUser = () =>{
 
         const data = await newUser(user)
         if (data[0]){
-            setErrorDataName(data.filter(d=>d.param === "name"))
-            setErrorDataEmail(data.filter(d=>d.param === "email"))
-            setErrorDataPassword(data.filter(d=>d.param === "password"))
+            setErrorData(data)
             setName("")
             setPassword("")
             setMail("")
@@ -73,23 +62,6 @@ const NewUser = () =>{
 
     }
 
-    useEffect(()=> {
-        if(errorDataName[0]){
-            setClassNameName("erreur")
-        }
-    }, [errorDataName])
-
-    useEffect(()=> {
-        if(errorDataPassword[0]){
-            setClassNamePassword("erreur")
-        }
-    }, [errorDataPassword])
-
-    useEffect(()=> {
-        if(errorDataEmail[0]){
-            setClassNameEmail("erreur")
-        }
-    }, [errorDataEmail])
 
     return (
         <>
@@ -102,8 +74,7 @@ const NewUser = () =>{
                 placeholder="name..."
                 handleChange={handleNameChange}
                 required
-                error={errorDataName}
-                className={classNameName}
+                error={errorData.filter(d=>d.param === "name")}
             />
 
             <Input 
@@ -113,8 +84,7 @@ const NewUser = () =>{
                 placeholder="password..."
                 handleChange={handlePasswordChange}
                 required
-                error={errorDataPassword}
-                className={classNamePassword}
+                error={errorData.filter(d=>d.param === "password")}
 
             />
 
@@ -125,8 +95,7 @@ const NewUser = () =>{
                 placeholder="email..."
                 handleChange={handleMailChange}
                 required
-                error={errorDataEmail}
-                className={classNameEmail}
+                error={errorData.filter(d=>d.param === "email")}
             />
 
             <Select

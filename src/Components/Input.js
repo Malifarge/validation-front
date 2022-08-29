@@ -5,10 +5,8 @@ const Input = ({
     placeholder,
     handleChange,
     required,
-    error,
-    className
+    error
   }) => {
-    
     return (
       <div className="flex clmn aic">
         <div className="flex jcsb w-280">
@@ -20,7 +18,7 @@ const Input = ({
             placeholder={placeholder}
             onChange={handleChange}
             required={required}
-            className={className}
+            className={error && error.length>0 ? "erreur" : ""}
           />
         </div>
         {error && <small className="m-t-10 red">{error.map(err=>err.msg)}</small>}
