@@ -1,5 +1,6 @@
 
 import { useState,useEffect } from "react"
+import { fetchUsers } from "../api/users"
 
 import H1 from "../Components/H1"
 import Card from "../Components/Card"
@@ -10,12 +11,11 @@ const Users = () =>{
     const [users, setUsers] = useState([])
 
     useEffect(()=>{
-        fetchUsers()
+        fetchData()
     },[])
 
-    const fetchUsers = async () =>{
-        const response = await fetch('http://localhost:5000/users')
-        const data = await response.json()
+    const fetchData = async () =>{
+        const data = await fetchUsers()
         setUsers(data)
 
     }
