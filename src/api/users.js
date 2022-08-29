@@ -6,4 +6,11 @@ const fetchUsers = async () =>{
 
 }
 
-export {fetchUsers}
+const fetchUser = async (slug) =>{
+    const response = await fetch(`http://localhost:5000/users/${slug}`)
+    const data = await response.json()
+    return(data)
+
+}
+
+export {fetchUsers, fetchUser}

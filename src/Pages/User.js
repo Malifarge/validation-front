@@ -2,6 +2,7 @@
 
 import { useState,useEffect } from "react"
 import { useParams, useNavigate } from 'react-router-dom'
+import { fetchUser } from "../api/users"
 
 import H1 from "../Components/H1"
 import H2 from "../Components/H2"
@@ -14,12 +15,11 @@ const User = () =>{
     const navigate= useNavigate()
 
     useEffect(()=>{
-        fetchUser()
+        fetchData()
     },[])
 
-    const fetchUser = async () =>{
-        const response = await fetch(`http://localhost:5000/users/${params.slug}`)
-        const data = await response.json()
+    const fetchData = async () =>{
+        const data = await fetchUser(params.slug)
         setUser(data)
         if(!data.name){
             navigate('*')
