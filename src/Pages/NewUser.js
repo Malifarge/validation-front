@@ -51,6 +51,7 @@ const NewUser = () =>{
         }
 
         const data = await newUser(user)
+        console.log(data);
         if (data[0]){
             setErrorData(data)
             setName("")
@@ -102,10 +103,12 @@ const NewUser = () =>{
                 required
                 handleChange={handleCityChange}
                 value={city}
-                options={["select a city", "Paris", "Los Angeles", "Tokyo"]} 
+                options={["select a city", "Paris", "Los Angeles", "Tokyo"]}
+                error={errorData.filter(d=>d.param === "city")}
+
             />
             
-            <Input 
+            <Input
 
                 label="Profile picture" 
                 type="url"
