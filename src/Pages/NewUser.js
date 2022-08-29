@@ -145,7 +145,7 @@ const NewUser = () =>{
             <Input 
 
                 label="Profile picture" 
-                type="texte"
+                type="url"
                 value={profile_picture}
                 placeholder="Link..."
                 handleChange={handleProfilePictureChange}
